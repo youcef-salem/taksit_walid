@@ -26,9 +26,7 @@ class MainButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(30),
             ),
           ),
-          onPressed: () {
-            // Add your onPressed logic here
-          },
+          onPressed: onPressed,
           child:  Text(
            txt,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
