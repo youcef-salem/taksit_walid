@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:taksit_walid/controlers/txt_filed_addproduct.dart';
+import 'package:taksit_walid/utilities/router.dart';
+import 'package:taksit_walid/utilities/routes.dart';
 import 'package:taksit_walid/view/addproduct_page.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-
-
 void main() {
   runApp(
     ChangeNotifierProvider(
+      
       create: (_) => TxtFiledAddproduct(),
-           
+
       child: const MyApp(),
     ),
   );
@@ -18,18 +19,15 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-  
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-       locale: const Locale('ar', 'SA'),
-  supportedLocales: const [
-    Locale('ar', 'SA'),
-  ],
-   // Add these localization delegates
+      locale: const Locale('ar', 'SA'),
+      supportedLocales: const [Locale('ar', 'SA')],
+      // Add these localization delegates
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -41,7 +39,7 @@ class MyApp extends StatelessWidget {
           // Add these properties for error styling
           errorStyle: TextStyle(color: Colors.red, fontSize: 12),
           errorBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
+            borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(color: Color(0xFF61758A)),
           ),
           focusedErrorBorder: OutlineInputBorder(
@@ -62,14 +60,12 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
       ),
-       builder: (context, child) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: child!,
-    );
-  },
-  
-      home: AddproductPage(),
+      builder: (context, child) {
+        return Directionality(textDirection: TextDirection.rtl, child: child!);
+      },
+
+      onGenerateRoute: (settings) => generateRoute(settings),
+      initialRoute: Routes.add_product,
     );
   }
 }

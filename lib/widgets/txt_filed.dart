@@ -8,7 +8,7 @@ class txtFiled_add extends StatelessWidget {
   final FocusNode? focusNode;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
-
+   final int maxligne ; // Default to single line
   const txtFiled_add({
     super.key,
     required this.hintText,
@@ -18,6 +18,7 @@ class txtFiled_add extends StatelessWidget {
     this.validator,
     this.controller,
     this.focusNode,
+    this.maxligne = 1, // Default to single line
   });
 
   @override
@@ -26,9 +27,10 @@ class txtFiled_add extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: SizedBox(
         width: size.width * 0.8,
-        height: 70,
+        height: validator==null? 70 : 90, // Adjust height based on validator presence
         child: TextFormField(
-          
+          focusNode: focusNode,
+          maxLines: maxligne ,
           controller: controller,
           validator: validator,
           onChanged: onChanged,

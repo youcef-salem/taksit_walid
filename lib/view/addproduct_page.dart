@@ -5,8 +5,8 @@ import 'package:taksit_walid/widgets/main_button.dart';
 import 'package:taksit_walid/widgets/txt_filed.dart';
 
 class AddproductPage extends StatelessWidget {
-  const AddproductPage({super.key});
-
+   AddproductPage({super.key});
+final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Consumer<TxtFiledAddproduct>(
@@ -15,45 +15,71 @@ class AddproductPage extends StatelessWidget {
           body: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Form(
-              key: prControler.formKey,
+              key: formKey,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const SizedBox(height: 50),
+                    const SizedBox(height: 30),
+                    Center(
+                      child: Text(
+                        'اضافة المنتج',
+                        style: Theme.of(context).textTheme.headlineMedium
+                            ?.copyWith(
+                              color: Colors.black,
+
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                    ),
+                    SizedBox(height: 40),
                     txtFiled_add(
+                      
                       hintText: 'ادخل اسم المنتج',
                       labelText: 'اسم المنتج',
                       size: MediaQuery.of(context).size,
                       validator: (p0) => prControler.validateName(p0!),
                       controller: prControler.nameController,
                     ),
+
                     txtFiled_add(
+                     
                       hintText: 'ادخل سعر الشراء',
                       labelText: 'سعر الشراء',
                       size: MediaQuery.of(context).size,
                       validator: (p0) => prControler.validatePrice(p0!),
                       controller: prControler.price_controler,
+                      onChanged: (p0) => prControler.sell_price(double.tryParse(p0) ?? 0.0),
+                     
                     ),
+
                     txtFiled_add(
+                     
                       hintText: 'ادخل سعر البيع',
                       labelText: 'سعر البيع',
                       size: MediaQuery.of(context).size,
                       validator: (p0) => prControler.validatePrice(p0!),
                       controller: prControler.buy_price_controler,
                     ),
-                    
+
                     txtFiled_add(
+                     
                       hintText: "ادخل وصف المنتج",
                       labelText: "وصف المنتج",
                       size: MediaQuery.of(context).size,
                       validator: (p0) => prControler.validateDescription(p0!),
                       controller: prControler.descriptionController,
+                      maxligne: 2,
                     ),
+                    const SizedBox(height: 20),
                     MainButton(
                       txt: 'إضافة',
                       size: MediaQuery.of(context).size,
-                      onPressed: () => prControler.onpressed(context)
-                       
+                      
+                      onPressed: () => {
+                        if (formKey.currentState!.validate()) {
+                          prControler.onpressed(context)
+                        } 
+                        },
                     ),
                   ],
                 ),

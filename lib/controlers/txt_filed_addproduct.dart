@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:taksit_walid/model/txt_addproduct.dart';
 
 class TxtFiledAddproduct with ChangeNotifier {
+  final FocusNode Node_sellprice = FocusNode();
+  
   TxtFiledAddproduct() {
     // Initialize controllers with empty values
     nameController.addListener(_controllerListener);
@@ -14,6 +16,10 @@ class TxtFiledAddproduct with ChangeNotifier {
   void _controllerListener() {
     notifyListeners();
   }
+   void sell_price (double value) {
+   buy_price_controler.text = (value + 6* value / 10).toString();
+    notifyListeners();
+  }
 
   product pr = product(
     productName: '',
@@ -23,7 +29,7 @@ class TxtFiledAddproduct with ChangeNotifier {
    
     
   );
-  final formKey = GlobalKey<FormState>();
+  
   // Unique keys for each field
 
   // Text editing controllers
@@ -146,9 +152,18 @@ void onpressed(BuildContext context) {
 
 
   // Method to check if form is valid
-  bool validateForm() {
-    return formKey.currentState?.validate() ?? false;
-  }
+
+    bool validateForm() {
+  // First check form's current state
+  
+    // If form is valid, run our additional validations
+    return validateName(nameController.text) == null &&
+           validatePrice(price_controler.text) == null &&
+           validatePrice(buy_price_controler.text) == null &&
+           validateDescription(descriptionController.text) == null;
+  
+}
+ 
 
   @override
   void dispose() {
@@ -157,7 +172,7 @@ void onpressed(BuildContext context) {
     descriptionController.removeListener(_controllerListener);
     price_controler.removeListener(_controllerListener);
     
-
+   
     nameController.dispose();
     buy_price_controler.dispose();
     descriptionController.dispose();
