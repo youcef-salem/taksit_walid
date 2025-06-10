@@ -2,11 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:taksit_walid/controlers/txt_filed_addproduct.dart';
 import 'package:taksit_walid/view/addproduct_page.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+
+
 
 void main() {
   runApp(
     ChangeNotifierProvider(
       create: (_) => TxtFiledAddproduct(),
+           
       child: const MyApp(),
     ),
   );
@@ -14,12 +18,23 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+       locale: const Locale('ar', 'SA'),
+  supportedLocales: const [
+    Locale('ar', 'SA'),
+  ],
+   // Add these localization delegates
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       theme: ThemeData(
         inputDecorationTheme: InputDecorationTheme(
           labelStyle: TextStyle(color: Colors.grey[600]),
@@ -47,6 +62,13 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
       ),
+       builder: (context, child) {
+    return Directionality(
+      textDirection: TextDirection.rtl,
+      child: child!,
+    );
+  },
+  
       home: AddproductPage(),
     );
   }

@@ -5,10 +5,10 @@ class TxtFiledAddproduct with ChangeNotifier {
   TxtFiledAddproduct() {
     // Initialize controllers with empty values
     nameController.addListener(_controllerListener);
-    priceController.addListener(_controllerListener);
+    buy_price_controler.addListener(_controllerListener);
     descriptionController.addListener(_controllerListener);
-    imageUrlController.addListener(_controllerListener);
-    categoryController.addListener(_controllerListener);
+    price_controler.addListener(_controllerListener);
+    
   }
 
   void _controllerListener() {
@@ -19,26 +19,27 @@ class TxtFiledAddproduct with ChangeNotifier {
     productName: '',
     productPrice: 0.0,
     productDescription: '',
-    productImageUrl: '',
-    productCategory: 'bbb',
+    buy_Price: 0.0,
+   
+    
   );
   final formKey = GlobalKey<FormState>();
   // Unique keys for each field
 
   // Text editing controllers
   final nameController = TextEditingController();
-  final priceController = TextEditingController();
+  final buy_price_controler = TextEditingController();
   final descriptionController = TextEditingController();
-  final imageUrlController = TextEditingController();
-  final categoryController = TextEditingController();
+  final price_controler = TextEditingController();
+ 
 
   // Method to clear all text fields
   void clearFields() {
     nameController.clear();
-    priceController.clear();
+    buy_price_controler.clear();
     descriptionController.clear();
-    imageUrlController.clear();
-    categoryController.clear();
+    price_controler.clear();
+    
     notifyListeners();
   }
 
@@ -46,62 +47,103 @@ class TxtFiledAddproduct with ChangeNotifier {
   void setproductDetails() {
     pr = product(
       productName: nameController.text,
-      productPrice: double.tryParse(priceController.text) ?? 0.0,
+      productPrice: double.tryParse(buy_price_controler.text) ?? 0.0,
       productDescription: descriptionController.text,
-      productImageUrl: imageUrlController.text == '' ? 'hhhh' : imageUrlController.text,
-      productCategory: categoryController.text,
+      buy_Price: double.tryParse(price_controler.text) ?? 0.0,
+      
     );
     notifyListeners();
   }
 
   void set productDetailst(product p) {
     nameController.text = p.productName;
-    priceController.text = p.productPrice.toString();
+    buy_price_controler.text = p.buy_Price.toString();
     descriptionController.text = p.productDescription;
-    imageUrlController.text = p.productImageUrl;
-    categoryController.text = p.productCategory;
+    price_controler.text = p.productPrice.toString();
+    
     notifyListeners();
   }
 
   // Validation methods
   String? validateName(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Product name is required';
+    if (value!.isEmpty ||
+        value.trim().isEmpty ||
+        value.length < 3 ||
+        value.contains(RegExp(r'\s{2,}')) // Check for multiple spaces
+    ){
+      if (value.isEmpty) {
+        return 'اسم المنتج مطلوب';
+      } else if (value.trim().isEmpty) {
+        return 'لا يمكن أن يكون اسم المنتج عبارة عن مسافات فقط';
+      } else if (value.length < 3) {
+        return 'يجب أن يتكون اسم المنتج من 3 أحرف على الأقل';
+     
+      } else if (value.contains(RegExp(r'\s{2,}'))) {
+        return 'لا يمكن أن يحتوي اسم المنتج على مسافات متتالية';
+      }
+     
     }
+    
     return null;
   }
-
+String ? validateDescription(String? value) {
+    
+    return null;
+  }
   String? validatePrice(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Price is required';
+   
+    if (value == null || value.isEmpty ||
+    value.trim().isEmpty ||
+        double.tryParse(value) == null ||
+        double.tryParse(value)! <= 0.0
+      ) {
+      if (value == null || value.isEmpty) {
+        return 'السعر مطلوب';
+      } else if (value.trim().isEmpty) {
+        return 'لا يمكن أن يكون السعر عبارة عن مسافات فقط';
+      } else if (double.tryParse(value) == null) {
+        return 'يجب أن يكون السعر رقمًا صحيحًا';
+      } else if (double.tryParse(value)! <= 0.0) {
+        return 'يجب أن يكون السعر أكبر من صفر';
+      }
     }
-    if (double.tryParse(value) == null) {
-      return 'Please enter a valid price';
-    }
+    
+    
     return null;
   }
+void onpressed(BuildContext context) {
+     debugPrint('Button pressed');
+                        if (validateForm()) {
+                          
+                          setproductDetails();
+                          debugPrint('Form is valid');
+                          debugPrint('Product Name: ${pr.productName}');
+                          debugPrint('Buy Price: ${pr.buy_Price}');
+                          debugPrint('Product Price: ${pr.productPrice}');
+                          debugPrint('Product Description: $pr.productDescription}');
+                          
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: Colors.green,
+                              content: Text(
+                                'تم إضافة المنتج: ${pr.productName}',
+                              ),
+                            ),
+                          );
+                         clearFields();
+                        } else {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              backgroundColor: Colors.red,
+                              content: Text('يرجى ملء جميع الحقول بشكل صحيح'),
+                            ),
+                          );
+                        }
+                      }
+  
+ 
+ 
 
-  String? validateDescription(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Description is required';
-    }
-    return null;
-  }
-
-  String? validateImageUrl(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Image URL is required';
-    }
-    // Add URL validation if needed
-    return null;
-  }
-
-  String? validateCategory(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Category is required';
-    }
-    return null;
-  }
 
   // Method to check if form is valid
   bool validateForm() {
@@ -111,16 +153,16 @@ class TxtFiledAddproduct with ChangeNotifier {
   @override
   void dispose() {
     nameController.removeListener(_controllerListener);
-    priceController.removeListener(_controllerListener);
+    buy_price_controler.removeListener(_controllerListener);
     descriptionController.removeListener(_controllerListener);
-    imageUrlController.removeListener(_controllerListener);
-    categoryController.removeListener(_controllerListener);
+    price_controler.removeListener(_controllerListener);
+    
 
     nameController.dispose();
-    priceController.dispose();
+    buy_price_controler.dispose();
     descriptionController.dispose();
-    imageUrlController.dispose();
-    categoryController.dispose();
+    price_controler.dispose();
+    
     super.dispose();
   }
 }

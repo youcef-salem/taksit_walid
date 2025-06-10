@@ -28,20 +28,26 @@ class txtFiled_add extends StatelessWidget {
         width: size.width * 0.8,
         height: 70,
         child: TextFormField(
+          
           controller: controller,
           validator: validator,
-          focusNode: focusNode,
           onChanged: onChanged,
-          onFieldSubmitted: (value) {
-            controller?.text = value;
-          },
+          // Add these properties for Arabic support
+          textAlign: TextAlign.right,
+          textDirection: TextDirection.rtl,
           decoration: InputDecoration(
             filled: true,
             fillColor: const Color(0xFFF0F2F5),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            contentPadding: const EdgeInsets.symmetric(
+              horizontal: 16,
+              vertical: 16,
+            ),
             border: const OutlineInputBorder(),
             labelText: labelText,
             hintText: hintText,
+            // Align hint and label to right
+            alignLabelWithHint: true,
+            hintTextDirection: TextDirection.rtl,
           ),
         ),
       ),

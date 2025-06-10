@@ -21,53 +21,40 @@ class AddproductPage extends StatelessWidget {
                   children: [
                     const SizedBox(height: 50),
                     txtFiled_add(
-                      hintText: 'Enter product name',
-                      labelText: 'Product Name',
+                      hintText: 'ادخل اسم المنتج',
+                      labelText: 'اسم المنتج',
                       size: MediaQuery.of(context).size,
-                      validator: prControler.validateName,
+                      validator: (p0) => prControler.validateName(p0!),
                       controller: prControler.nameController,
                     ),
                     txtFiled_add(
-                      hintText: 'Enter product price',
-                      labelText: 'Product Price',
+                      hintText: 'ادخل سعر الشراء',
+                      labelText: 'سعر الشراء',
                       size: MediaQuery.of(context).size,
                       validator: (p0) => prControler.validatePrice(p0!),
-                      controller: prControler.priceController,
+                      controller: prControler.price_controler,
                     ),
                     txtFiled_add(
-                      hintText: 'Enter product description',
-                      labelText: 'Product Description',
+                      hintText: 'ادخل سعر البيع',
+                      labelText: 'سعر البيع',
                       size: MediaQuery.of(context).size,
-                      validator: (p0) =>  prControler.validateDescription(p0!),
+                      validator: (p0) => prControler.validatePrice(p0!),
+                      controller: prControler.buy_price_controler,
+                    ),
+                    
+                    txtFiled_add(
+                      hintText: "ادخل وصف المنتج",
+                      labelText: "وصف المنتج",
+                      size: MediaQuery.of(context).size,
+                      validator: (p0) => prControler.validateDescription(p0!),
                       controller: prControler.descriptionController,
                     ),
-                    txtFiled_add(
-                      hintText: 'Enter product image URL',
-                      labelText: 'Product Image URL',
-                      size: MediaQuery.of(context).size,
-                      validator: (p0) => prControler.validateImageUrl(p0!), 
-                      controller: prControler.imageUrlController,
-                    ),
-                    txtFiled_add(
-                      hintText: "Enter product category",
-                      labelText: "Product Category",
-                      size:  MediaQuery.of(context).size,
-                      validator: (p0) => prControler.validateCategory(p0!),
-                      controller: prControler.categoryController,
-                    ),
-                   
                     MainButton(
-                      txt: 'submit',
+                      txt: 'إضافة',
                       size: MediaQuery.of(context).size,
-                      onPressed: () {
+                      onPressed: () => prControler.onpressed(context)
                        
-                        if (prControler.validateForm()) {
-                          
-                         
-                          
-                        }
-                      },
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -78,4 +65,3 @@ class AddproductPage extends StatelessWidget {
     );
   }
 }
-
