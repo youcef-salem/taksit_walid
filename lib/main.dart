@@ -65,7 +65,7 @@ class MyApp extends StatelessWidget {
       },
 
       onGenerateRoute: (settings) => generateRoute(settings),
-      initialRoute: Routes.add_product,
+      initialRoute: Routes.navbar,
     );
   }
 }

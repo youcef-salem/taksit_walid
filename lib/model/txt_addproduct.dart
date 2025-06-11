@@ -14,15 +14,13 @@ class product {
     required this.productName,
     required this .buy_Price,
     required this.productPrice,
-    
     required this.productDescription,
   });
   @override
   String toString() {
-    // TODO: implement toString
-
-    return 'Product Name: $productName, Buy Price: $buy_Price, Price: $productPrice, Description: $productDescription';
+ return 'Product Name: $productName, Buy Price: $buy_Price, Price: $productPrice, Description: $productDescription';
   }
 
-  // Example method
+  
+
 }
