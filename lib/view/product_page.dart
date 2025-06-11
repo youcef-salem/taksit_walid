@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:taksit_walid/controlers/product_list.dart';
 import 'package:taksit_walid/model/txt_addproduct.dart' as type;
 import 'package:taksit_walid/widgets/product_card.dart';
 
@@ -43,20 +45,26 @@ class ProductPage extends StatelessWidget {
               elevation: MaterialStateProperty.all(0),
             ),
             const SizedBox(height: 30),
-            Expanded(
-              child: ListView.builder(
-                shrinkWrap: true,
-               
-                itemCount: 5, // Adjust this to the number of products you have
-                itemBuilder: (context, index) => ProductCard(
-                  product: type.product(
-                    productName: 'مثال المنتج',
-                    buy_Price: 100.0,
-                    productPrice: 120.0,
-                    productDescription: 'وصف المنتج',
+            Consumer<ProductList>(
+              builder: (context, productList, _) {
+                return Expanded(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+
+                    itemCount: productList.products.length
+                        , // Adjust this to the number of products you have
+                    itemBuilder: (context, index) => ProductCard(
+                      product:  type.product(
+                        productName: productList.products[index].productName,
+                        productPrice: productList.products[index].productPrice,
+                        buy_Price: productList.products[index].buy_Price,
+                        productDescription:
+                            productList.products[index].productDescription,
+                      ),
+                    ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
           ],
         ),

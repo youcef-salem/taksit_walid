@@ -34,6 +34,7 @@ class dataBase_products {
 
   Future<void> insertProduct(Database db, Map<String, dynamic> product) async {
     await db.insert('products', product);
+    
   }
 
   Future<List<Map<String, dynamic>>> getProducts(Database db) async {

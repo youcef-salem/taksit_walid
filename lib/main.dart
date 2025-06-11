@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taksit_walid/controlers/product_list.dart';
 import 'package:taksit_walid/controlers/txt_filed_addproduct.dart';
 import 'package:taksit_walid/utilities/router.dart';
 import 'package:taksit_walid/utilities/routes.dart';
@@ -8,10 +9,14 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      
-      create: (_) => TxtFiledAddproduct(),
-
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => TxtFiledAddproduct()),
+        ChangeNotifierProvider(create: (_) => ProductList()), // Example provider
+        // Add more providers here like:
+        // ChangeNotifierProvider(create: (_) => AnotherProvider()),
+        // ChangeNotifierProvider(create: (_) => YetAnotherProvider()),
+      ],
       child: const MyApp(),
     ),
   );

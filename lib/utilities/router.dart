@@ -13,7 +13,7 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       builder: (_) => const ProductPage(), // Replace with actual ProductListPage
     );
     case Routes.navbar :
-   return   MaterialPageRoute(builder: (_) => const  NavBar());
+   return   MaterialPageRoute(builder: (_) =>   NavBar());
 
     default:
       return MaterialPageRoute(

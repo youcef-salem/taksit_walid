@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
-import 'package:provider/provider.dart';
+
 import 'package:taksit_walid/view/addproduct_page.dart';
 import 'package:taksit_walid/view/product_page.dart';
 class NavBar extends StatelessWidget {
-  const NavBar({super.key});
+  
+   NavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
    
     return Scaffold(
      body :PersistentTabView(
-
+ 
 
      tabs: [
 
