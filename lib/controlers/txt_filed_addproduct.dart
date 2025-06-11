@@ -122,12 +122,7 @@ void onpressed(BuildContext context) {
                         if (validateForm()) {
                           
                           setproductDetails();
-                          debugPrint('Form is valid');
-                          debugPrint('Product Name: ${pr.productName}');
-                          debugPrint('Buy Price: ${pr.buy_Price}');
-                          debugPrint('Product Price: ${pr.productPrice}');
-                          debugPrint('Product Description: $pr.productDescription}');
-                          
+                      debugPrint('Product details befor dta base set: ${pr.productName}, ${pr.productPrice}, ${pr.buy_Price}, ${pr.productDescription}');
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               backgroundColor: Colors.green,

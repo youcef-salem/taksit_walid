@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:taksit_walid/model/txt_addproduct.dart' as type;
+import 'package:taksit_walid/widgets/product_card.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -7,54 +9,56 @@ class ProductPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 30),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(Icons.add),
-                  SizedBox(width: 120),
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            SizedBox(height: MediaQuery.of(context).size.height * 0.05),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Icon(Icons.add),
+                SizedBox(width: 120),
 
-                  Text(
-                    'المنتجات',
-                    style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                      color: Colors.black,
+                Text(
+                  'المنتجات',
+                  style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                    color: Colors.black,
 
-                      fontWeight: FontWeight.bold,
-                    ),
+                    fontWeight: FontWeight.bold,
                   ),
-                ],
-              ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-               SearchBar(
-                hintText: 'ابحث عن منتج',
-                onChanged: (value) {
-                  // Implement search functionality here
-                },
+                ),
+              ],
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SearchBar(
+              hintText: 'ابحث عن منتج',
+              onChanged: (value) {
+                // Implement search functionality here
+              },
               backgroundColor: MaterialStateProperty.all(Color(0xFFF2F2F5)),
               shape: MaterialStateProperty.all(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10),
-              )
-                
-                
-                ),
-
-              elevation: MaterialStateProperty.all(0)
-              
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
               ),
-              
 
-
-
-
-
-             
-            ],
-          ),
+              elevation: MaterialStateProperty.all(0),
+            ),
+            const SizedBox(height: 30),
+            Expanded(
+              child: ListView.builder(
+                shrinkWrap: true,
+               
+                itemCount: 5, // Adjust this to the number of products you have
+                itemBuilder: (context, index) => ProductCard(
+                  product: type.product(
+                    productName: 'مثال المنتج',
+                    buy_Price: 100.0,
+                    productPrice: 120.0,
+                    productDescription: 'وصف المنتج',
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

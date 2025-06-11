@@ -20,6 +20,22 @@ class product {
   String toString() {
  return 'Product Name: $productName, Buy Price: $buy_Price, Price: $productPrice, Description: $productDescription';
   }
+  Map<String, dynamic> toMap() {
+    return {
+      'productName': productName,
+      'buy_Price': buy_Price,
+      'productPrice': productPrice,
+      'productDescription': productDescription,
+    };
+  }
+  factory product.fromMap(Map<String, dynamic> map) {
+    return product(
+      productName: map['productName'],
+      buy_Price: map['buy_Price'],
+      productPrice: map['productPrice'],
+      productDescription: map['productDescription'],
+    );
+  }
 
   
 
