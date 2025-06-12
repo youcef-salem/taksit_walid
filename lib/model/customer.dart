@@ -3,7 +3,7 @@ class Customer {
   final String name;
   final String description;
   final int numerMonth;
-  final int phone_number;
+  final String  phone_number;
   final double monthlyPayment;
   final int id_product;
   Customer({

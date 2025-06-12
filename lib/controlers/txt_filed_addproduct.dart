@@ -18,6 +18,7 @@ class TxtFiledAddproduct with ChangeNotifier {
   }
    void sell_price (double value) {
    buy_price_controler.text = (value + 6* value / 10).toString();
+   
     notifyListeners();
   }
 

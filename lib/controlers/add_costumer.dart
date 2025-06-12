@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:taksit_walid/model/customer.dart';
+import 'package:taksit_walid/model/txt_addproduct.dart';
 
 class AddCustomer with ChangeNotifier {
   Customer? cureentCustomer;
-
+  product? selected_product;
   final nameController = TextEditingController();
   final number_controler = TextEditingController();
   final description_controler = TextEditingController();
   final numberMonth_controler = TextEditingController();
-  final id_product_controler = TextEditingController();
+
   final MonthlyPayment_controler = TextEditingController();
+  void set_selcetd_pr(product? pr) {
+    selected_product = pr;
+    notifyListeners();
+  }
+
   AddCustomer() {
     // Initialize controllers with empty values
     nameController.addListener(_controllerListener);
     number_controler.addListener(_controllerListener);
     numberMonth_controler.addListener(_controllerListener);
     description_controler.addListener(_controllerListener);
-    id_product_controler.addListener(_controllerListener);
-    MonthlyPayment_controler.addListener(_controllerListener);
 
+    MonthlyPayment_controler.addListener(_controllerListener);
   }
   void _controllerListener() {
     notifyListeners();
@@ -29,9 +34,9 @@ class AddCustomer with ChangeNotifier {
     number_controler.clear();
     description_controler.clear();
     numberMonth_controler.clear();
-    id_product_controler.clear();
+
     MonthlyPayment_controler.clear();
-    cureentCustomer = null; 
+    cureentCustomer = null;
     notifyListeners();
   }
 
@@ -43,7 +48,7 @@ class AddCustomer with ChangeNotifier {
     cureentCustomer = Customer(
       id: generateId(),
       name: nameController.text,
-      phone_number: int.tryParse(number_controler.text) ?? 0,
+      phone_number: number_controler.text ,
       description: description_controler.text,
       numerMonth: int.tryParse(numberMonth_controler.text) ?? 0,
       monthlyPayment: 0.0, // Assuming you will set this later
@@ -78,6 +83,7 @@ class AddCustomer with ChangeNotifier {
 
     return null;
   }
+
   String? validateNumberMonth(String value) {
     if (value.isEmpty) {
       return 'الرجاء إدخال عدد الأشهر';
@@ -88,11 +94,11 @@ class AddCustomer with ChangeNotifier {
 
     return null;
   }
+
   String? validateDescription(String value) {
-    
     return null;
   }
-  
+
   String? validateMonthlyPayment(String value) {
     if (value.isEmpty) {
       return 'الرجاء إدخال المبلغ الشهري';
@@ -103,43 +109,40 @@ class AddCustomer with ChangeNotifier {
 
     return null;
   }
-  String? validateIdProduct(String value) {
-    if (value.isEmpty) {
-      return 'الرجاء إدخال رقم المنتج';
-    }
-    if (int.tryParse(value) == null || int.parse(value) <= 0) {
-      return 'رقم المنتج يجب أن يكون رقمًا صحيحًا أكبر من 0';
-    }
-
-
-    return null;
-  }
-
-
 
   bool validateForm() {
-  // First check form's current state
-  
+    // First check form's current state
+
     // If form is valid, run our additional validations
     return validateName(nameController.text) == null &&
-           validatePhoneNumber(number_controler.text) == null &&
-           
-           validateNumberMonth(numberMonth_controler.text) == null &&
-           validateDescription(description_controler.text) == null
-           && validateMonthlyPayment(numberMonth_controler.text) == null
-           && validateIdProduct(numberMonth_controler.text) == null;
-}
+        validatePhoneNumber(number_controler.text) == null &&
+        validateNumberMonth(numberMonth_controler.text) == null &&
+        validateDescription(description_controler.text) == null &&
+        validateMonthlyPayment(numberMonth_controler.text) == null;
+  }
+
+  void set_montgh_pay(double? value) {
+    double month_number = value?? 1;
+    double price = selected_product!.productPrice;
+    if (num != 0) {
+      MonthlyPayment_controler.text = (price / month_number).toInt().toString();
+    } else {
+      MonthlyPayment_controler.text = "0.0";
+    }
+    notifyListeners();
+  }
+
   void onPressed(BuildContext context) {
     debugPrint('Button pressed');
     if (validateForm()) {
       setCustomerDetails();
-      debugPrint('Customer details before database set: ${cureentCustomer?.name}, ${cureentCustomer?.phone_number}, ${cureentCustomer?.description}, ${cureentCustomer?.numerMonth}');
+      debugPrint(
+        cureentCustomer.toString() 
+      );
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.green,
-          content: Text(
-            'تم إضافة الزبون: ${cureentCustomer?.name}',
-          ),
+          content: Text('تم إضافة الزبون: ${cureentCustomer?.name}'),
         ),
       );
       clearFields();
@@ -152,24 +155,4 @@ class AddCustomer with ChangeNotifier {
       );
     }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
