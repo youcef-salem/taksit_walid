@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:taksit_walid/model/txt_addproduct.dart';
 
 class TxtFiledAddproduct with ChangeNotifier {
-  final FocusNode Node_sellprice = FocusNode();
+  
   
   TxtFiledAddproduct() {
     // Initialize controllers with empty values
@@ -61,14 +61,7 @@ class TxtFiledAddproduct with ChangeNotifier {
     notifyListeners();
   }
 
-  void set productDetailst(product p) {
-    nameController.text = p.productName;
-    buy_price_controler.text = p.buy_Price.toString();
-    descriptionController.text = p.productDescription;
-    price_controler.text = p.productPrice.toString();
-    
-    notifyListeners();
-  }
+  
 
   // Validation methods
   String? validateName(String? value) {

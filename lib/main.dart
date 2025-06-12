@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:taksit_walid/controlers/add_costumer.dart';
 import 'package:taksit_walid/controlers/product_list.dart';
 import 'package:taksit_walid/controlers/txt_filed_addproduct.dart';
 import 'package:taksit_walid/utilities/router.dart';
@@ -12,7 +13,8 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => TxtFiledAddproduct()),
-        ChangeNotifierProvider(create: (_) => ProductList()), // Example provider
+        ChangeNotifierProvider(create: (_) => ProductList()),
+        ChangeNotifierProvider(create: (_) => AddCustomer()) ,// Example provider
         // Add more providers here like:
         // ChangeNotifierProvider(create: (_) => AnotherProvider()),
         // ChangeNotifierProvider(create: (_) => YetAnotherProvider()),
