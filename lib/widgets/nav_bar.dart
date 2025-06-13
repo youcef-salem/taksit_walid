@@ -3,6 +3,7 @@ import 'package:persistent_bottom_nav_bar_v2/persistent_bottom_nav_bar_v2.dart';
 import 'package:taksit_walid/view/add_custumer.dart';
 
 import 'package:taksit_walid/view/addproduct_page.dart';
+import 'package:taksit_walid/view/custumer_list.dart';
 import 'package:taksit_walid/view/product_page.dart';
 
 class NavBar extends StatelessWidget {
@@ -14,7 +15,7 @@ class NavBar extends StatelessWidget {
       body: PersistentTabView(
         tabs: [
           PersistentTabConfig(
-            screen: ProductPage(),
+            screen:  CustumerList(),
             item: ItemConfig(
               icon: Icon(Icons.currency_exchange),
               title: "الزبائن ",

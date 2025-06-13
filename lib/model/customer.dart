@@ -7,7 +7,7 @@ class Customer {
   final double monthlyPayment;
   final int id_product;
   Customer({
-    required this.id,
+    required this.id, 
     required this.name,
     required this.phone_number,
     required this.id_product,

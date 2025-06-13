@@ -124,7 +124,7 @@ class AddCustomer with ChangeNotifier {
   void set_montgh_pay(double? value) {
     double month_number = value?? 1;
     double price = selected_product!.productPrice;
-    if (num != 0) {
+    if (month_number != 0) {
       MonthlyPayment_controler.text = (price / month_number).toInt().toString();
     } else {
       MonthlyPayment_controler.text = "0.0";

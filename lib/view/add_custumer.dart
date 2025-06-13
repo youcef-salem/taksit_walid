@@ -21,8 +21,9 @@ class AddCustumer extends StatelessWidget {
               key: formKey,
               child: SingleChildScrollView(
                 child: Column(
+                  
                   children: [
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 25),
                     Center(
                       child: Text(
                         "اضافة زبون",
@@ -33,7 +34,7 @@ class AddCustumer extends StatelessWidget {
                             ),
                       ),
                     ),
-                    const SizedBox(height: 40),
+                    const SizedBox(height: 30),
                     Consumer<ProductList>(
                       builder: (context, productList, _) {
                         return Row(
@@ -52,7 +53,9 @@ class AddCustumer extends StatelessWidget {
                                         borderRadius: BorderRadius.circular(15),
                                       ),
                                       child: Container(
-                                        width: MediaQuery.of(context).size.width * 0.8,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                            0.8,
                                         padding: const EdgeInsets.all(20),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.min,
@@ -69,42 +72,70 @@ class AddCustumer extends StatelessWidget {
                                             Container(
                                               height: 300,
                                               decoration: BoxDecoration(
-                                                borderRadius: BorderRadius.circular(10),
-                                                border: Border.all(color: Colors.grey.shade300),
+                                                borderRadius:
+                                                    BorderRadius.circular(10),
+                                                border: Border.all(
+                                                  color: Colors.grey.shade300,
+                                                ),
                                               ),
                                               child: ListView.builder(
                                                 shrinkWrap: true,
-                                                itemCount: productList.products.length,
+                                                itemCount:
+                                                    productList.products.length,
                                                 itemBuilder: (context, index) {
-                                                  final product = productList.products[index];
+                                                  final product = productList
+                                                      .products[index];
                                                   return Card(
                                                     elevation: 0,
-                                                    margin: const EdgeInsets.symmetric(
-                                                      horizontal: 8,
-                                                      vertical: 4,
-                                                    ),
+                                                    margin:
+                                                        const EdgeInsets.symmetric(
+                                                          horizontal: 8,
+                                                          vertical: 4,
+                                                        ),
                                                     child: ListTile(
                                                       title: Text(
                                                         product.productName,
-                                                        style: const TextStyle(fontWeight: FontWeight.w500),
+                                                        style: const TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
                                                       ),
                                                       subtitle: Text(
                                                         'السعر: ${product.productPrice}',
-                                                        style: TextStyle(color: Colors.grey.shade700),
+                                                        style: TextStyle(
+                                                          color: Colors
+                                                              .grey
+                                                              .shade700,
+                                                        ),
                                                       ),
-                                                      onTap: () => Navigator.pop(context, product),
-                                                      trailing: const Icon(Icons.arrow_forward_ios, size: 16),
+                                                      onTap: () =>
+                                                          Navigator.pop(
+                                                            context,
+                                                            product,
+                                                          ),
+                                                      trailing: const Icon(
+                                                        Icons.arrow_forward_ios,
+                                                        size: 16,
+                                                      ),
                                                     ),
                                                   );
                                                 },
                                               ),
                                             ),
                                             TextButton(
-                                              onPressed: () => Navigator.pop(context),
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
                                               style: TextButton.styleFrom(
-                                                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                      horizontal: 30,
+                                                      vertical: 10,
+                                                    ),
                                               ),
-                                              child: const Text('إلغاء', style: TextStyle(fontSize: 16)),
+                                              child: const Text(
+                                                'إلغاء',
+                                                style: TextStyle(fontSize: 16),
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -117,11 +148,16 @@ class AddCustumer extends StatelessWidget {
                             ),
                             if (customerCont.selected_product != null)
                               Container(
-                                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 16,
+                                  vertical: 8,
+                                ),
                                 decoration: BoxDecoration(
                                   color: Colors.grey.shade100,
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(color: Colors.grey.shade300),
+                                  border: Border.all(
+                                    color: Colors.grey.shade300,
+                                  ),
                                 ),
                                 child: Text(
                                   "سعر البيع: ${customerCont.selected_product!.productPrice}",
@@ -141,7 +177,6 @@ class AddCustumer extends StatelessWidget {
                       size: MediaQuery.of(context).size,
                       validator: (p0) => customerCont.validateName(p0!),
                       controller: customerCont.nameController,
-
                     ),
                     txtFiled_add(
                       hintText: 'ادخل رقم الهاتف',
@@ -150,14 +185,15 @@ class AddCustumer extends StatelessWidget {
                       validator: (p0) => customerCont.validatePhoneNumber(p0!),
                       controller: customerCont.number_controler,
                     ),
-                   
+
                     txtFiled_add(
                       hintText: "ادخل عدد الأشهر",
                       labelText: "عدد الأشهر",
                       size: MediaQuery.of(context).size,
                       validator: (p0) => customerCont.validateNumberMonth(p0!),
                       controller: customerCont.numberMonth_controler,
-                      onChanged: (p0) => customerCont.set_montgh_pay(double.tryParse(p0)),
+                      onChanged: (p0) =>
+                          customerCont.set_montgh_pay(double.tryParse(p0)),
                     ),
                     txtFiled_add(
                       hintText: "ادخل قيمة القسط الشهري",
