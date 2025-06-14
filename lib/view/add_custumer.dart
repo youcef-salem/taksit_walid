@@ -144,6 +144,7 @@ class AddCustumer extends StatelessWidget {
                                   },
                                 );
                                 customerCont.set_selcetd_pr(result);
+                                
                               },
                             ),
                             if (customerCont.selected_product != null)

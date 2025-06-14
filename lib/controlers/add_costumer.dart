@@ -5,6 +5,7 @@ import 'package:taksit_walid/model/txt_addproduct.dart';
 class AddCustomer with ChangeNotifier {
   Customer? cureentCustomer;
   product? selected_product;
+  int? curnt_id_product;
   final nameController = TextEditingController();
   final number_controler = TextEditingController();
   final description_controler = TextEditingController();
@@ -13,6 +14,7 @@ class AddCustomer with ChangeNotifier {
   final MonthlyPayment_controler = TextEditingController();
   void set_selcetd_pr(product? pr) {
     selected_product = pr;
+    
     notifyListeners();
   }
 
@@ -45,14 +47,16 @@ class AddCustomer with ChangeNotifier {
   }
 
   void setCustomerDetails() {
+    if (selected_product == null) return;
     cureentCustomer = Customer(
+      sel_product: selected_product!,
       id: generateId(),
       name: nameController.text,
-      phone_number: number_controler.text ,
+      phone_number: number_controler.text,
       description: description_controler.text,
       numerMonth: int.tryParse(numberMonth_controler.text) ?? 0,
       monthlyPayment: 0.0, // Assuming you will set this later
-      id_product: 0, // Assuming you will set this later
+    
     );
     notifyListeners();
   }
@@ -122,7 +126,7 @@ class AddCustomer with ChangeNotifier {
   }
 
   void set_montgh_pay(double? value) {
-    double month_number = value?? 1;
+    double month_number = value ?? 1;
     double price = selected_product!.productPrice;
     if (month_number != 0) {
       MonthlyPayment_controler.text = (price / month_number).toInt().toString();
@@ -136,9 +140,7 @@ class AddCustomer with ChangeNotifier {
     debugPrint('Button pressed');
     if (validateForm()) {
       setCustomerDetails();
-      debugPrint(
-        cureentCustomer.toString() 
-      );
+      debugPrint(cureentCustomer.toString());
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.green,

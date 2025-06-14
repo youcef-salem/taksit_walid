@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taksit_walid/model/customer.dart';
+import 'package:taksit_walid/model/txt_addproduct.dart';
 import 'package:taksit_walid/widgets/custumer.dart';
 
 class CustumerList extends StatelessWidget {
@@ -7,9 +8,10 @@ class CustumerList extends StatelessWidget {
     id: 1,
     name: "عمر",
     phone_number: "0791556965",
-    id_product: 3,
+    
     numerMonth: 12,
     monthlyPayment: 300,
+    sel_product: product(productName: "", buy_Price: 200, productPrice: 300, productDescription: "productDescription")
   );
   CustumerList({super.key});
 
