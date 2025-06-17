@@ -14,9 +14,10 @@ class AddCustomer with ChangeNotifier {
   final MonthlyPayment_controler = TextEditingController();
   void set_selcetd_pr(product? pr) {
     selected_product = pr;
-    
+
     notifyListeners();
   }
+  
 
   AddCustomer() {
     // Initialize controllers with empty values
@@ -55,9 +56,9 @@ class AddCustomer with ChangeNotifier {
       phone_number: number_controler.text,
       description: description_controler.text,
       numerMonth: int.tryParse(numberMonth_controler.text) ?? 0,
-      monthlyPayment: 0.0, // Assuming you will set this later
-    
+      monthlyPayment: double.tryParse(MonthlyPayment_controler.text) ?? 0.0,
     );
+    cureentCustomer!.set_months();
     notifyListeners();
   }
 
