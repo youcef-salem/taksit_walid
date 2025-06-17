@@ -9,7 +9,11 @@ class MonthsTopay {
     required this.deadligne,
     required this.time_payment,
   });
-  
+  @override
+  String toString() {
+    // TODO: implement toString
+    return 'the deadligne is $deadligne and the is payed $is_payed  and nu,ber is $numner_of_pay';
+  }
 
 
 

@@ -10,7 +10,7 @@ class Customer {
   final String phone_number;
   final double monthlyPayment;
   final product sel_product;
-  final List<MonthsTopay> months_array = [];
+  List<MonthsTopay> months_array = [];
   final first_month = DateFormat('dd-MM-yyyy').format(DateTime.now());
   final next_month = DateFormat('dd-MM-yyyy').format(
     DateTime(DateTime.now().year, DateTime.now().month + 1, DateTime.now().day),
@@ -71,16 +71,18 @@ class Customer {
 
   void set_months() {
     for (var i = 1; i <= numerMonth; i++) {
-      months_array[i] = MonthsTopay(
-        numner_of_pay: i,
-        deadligne: DateFormat('dd-MM-yyyy').format(
-          DateTime(
-            DateTime.now().year,
-            DateTime.now().month + i,
-            DateTime.now().day,
+      months_array.add(
+        MonthsTopay(
+          numner_of_pay: i,
+          deadligne: DateFormat('dd-MM-yyyy').format(
+            DateTime(
+              DateTime.now().year,
+              DateTime.now().month + i,
+              DateTime.now().day,
+            ),
           ),
+          time_payment: null,
         ),
-        time_payment: null,
       );
     }
   }
@@ -93,14 +95,10 @@ class Customer {
   }
 
   void deletelast_month() {
-    months_array.removeAt(0);
+    months_array!.removeAt(0);
   }
 
   bool check_emty() {
-    return months_array.isEmpty; 
+    return months_array.isEmpty;
   }
-
-
-
-  
 }
