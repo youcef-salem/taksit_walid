@@ -17,7 +17,6 @@ class AddCustomer with ChangeNotifier {
 
     notifyListeners();
   }
-  
 
   AddCustomer() {
     // Initialize controllers with empty values
@@ -39,7 +38,7 @@ class AddCustomer with ChangeNotifier {
     numberMonth_controler.clear();
 
     MonthlyPayment_controler.clear();
-   
+
     notifyListeners();
   }
 
@@ -117,9 +116,8 @@ class AddCustomer with ChangeNotifier {
   }
 
   bool validateForm() {
-    // First check form's current state
-
-    // If form is valid, run our additional validations
+    
+    
     return validateName(nameController.text) == null &&
         validatePhoneNumber(number_controler.text) == null &&
         validateNumberMonth(numberMonth_controler.text) == null &&
@@ -128,8 +126,14 @@ class AddCustomer with ChangeNotifier {
   }
 
   void set_montgh_pay(double? value) {
+    double price;
     double month_number = value ?? 1;
-    double price = selected_product!.productPrice;
+    if (selected_product != null) {
+      price = selected_product!.productPrice;
+    } else {
+      price = 0.0;
+    }
+
     if (month_number != 0) {
       MonthlyPayment_controler.text = (price / month_number).toInt().toString();
     } else {

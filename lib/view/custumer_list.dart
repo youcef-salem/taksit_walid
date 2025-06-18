@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:provider/provider.dart';
 import 'package:taksit_walid/controlers/list_cusumer.dart';
 import 'package:taksit_walid/widgets/custumer.dart';
@@ -6,22 +7,21 @@ import 'package:taksit_walid/widgets/custumer.dart';
 class CustumerList extends StatelessWidget {
   CustumerList({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Consumer<ListCusumer>(
-        builder: (context, val, child) => 
-         Padding(
+        builder: (context, val, child) => Padding(
           padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               SizedBox(height: MediaQuery.of(context).size.height * 0.05),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  IconButton(
-                    onPressed: val.setlist ,
-                    icon:  Icon(Icons.add)),
-                  SizedBox(width: 120),
+                  IconButton(onPressed: val.setlist, icon: Icon(Icons.add)),
+                 
                   Text(
                     "الزبائن",
                     style: Theme.of(context).textTheme.headlineMedium?.copyWith(
@@ -29,6 +29,8 @@ class CustumerList extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                   
+                  IconButton(onPressed: val.setlist, icon: Icon(Icons.refresh))
                 ],
               ),
               SizedBox(height: 30),

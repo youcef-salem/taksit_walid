@@ -10,9 +10,13 @@ class ListCusumer with ChangeNotifier {
   late final Database db;
   List<Customer> lista = [];
   ListCusumer() {
-    _initDB();
-
+    _initilisation();
   }
+  Future<void> _initilisation() async {
+   await _initDB();
+    await setlist();
+  }
+
   Future<void> setlist() async {
     lista = await get_customer_list();
     notifyListeners();
