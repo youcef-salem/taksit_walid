@@ -39,7 +39,7 @@ class AddCustomer with ChangeNotifier {
     numberMonth_controler.clear();
 
     MonthlyPayment_controler.clear();
-    cureentCustomer = null;
+   
     notifyListeners();
   }
 
@@ -48,17 +48,18 @@ class AddCustomer with ChangeNotifier {
   }
 
   void setCustomerDetails() {
+    int id = generateId();
     if (selected_product == null) return;
     cureentCustomer = Customer(
       sel_product: selected_product!,
-      id: generateId(),
+      id: id,
       name: nameController.text,
       phone_number: number_controler.text,
       description: description_controler.text,
       numerMonth: int.tryParse(numberMonth_controler.text) ?? 0,
       monthlyPayment: double.tryParse(MonthlyPayment_controler.text) ?? 0.0,
     );
-    cureentCustomer!.set_months();
+    cureentCustomer!.set_months(id);
     notifyListeners();
   }
 

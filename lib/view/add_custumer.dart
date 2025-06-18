@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:taksit_walid/controlers/add_costumer.dart';
+import 'package:taksit_walid/controlers/list_cusumer.dart';
 import 'package:taksit_walid/controlers/product_list.dart';
+import 'package:taksit_walid/model/customer.dart';
 import 'package:taksit_walid/model/txt_addproduct.dart';
 import 'package:taksit_walid/widgets/main_button.dart';
 import 'package:taksit_walid/widgets/txt_filed.dart';
@@ -21,7 +23,6 @@ class AddCustumer extends StatelessWidget {
               key: formKey,
               child: SingleChildScrollView(
                 child: Column(
-                  
                   children: [
                     const SizedBox(height: 25),
                     Center(
@@ -144,7 +145,6 @@ class AddCustumer extends StatelessWidget {
                                   },
                                 );
                                 customerCont.set_selcetd_pr(result);
-                                
                               },
                             ),
                             if (customerCont.selected_product != null)
@@ -213,14 +213,21 @@ class AddCustumer extends StatelessWidget {
                       maxligne: 2,
                     ),
                     const SizedBox(height: 20),
-                    MainButton(
-                      txt: 'إضافة',
-                      size: MediaQuery.of(context).size,
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          customerCont.onPressed(context);
-                        }
-                      },
+                    Consumer<ListCusumer>(
+                      builder: (_, value, __) => MainButton(
+                        txt: 'إضافة',
+                        size: MediaQuery.of(context).size,
+                        onPressed: () async {
+                          if (formKey.currentState!.validate()) {
+                            customerCont.onPressed(context);
+                            value.add_customer(customerCont.cureentCustomer!);
+                            List<Customer> list = await value.get_customer_list();
+                            debugPrint(
+                              "the name of customer ${list.last.name} and product name ${list.last.sel_product.productName}",
+                            );
+                          }
+                        },
+                      ),
                     ),
                   ],
                 ),

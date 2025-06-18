@@ -15,6 +15,7 @@ class _CustumerListState extends State<CustumerList> {
   late Customer second;
   @override
   void initState() {
+    
     sc = Customer(
       id: 1,
       name: "عمر",
@@ -28,7 +29,7 @@ class _CustumerListState extends State<CustumerList> {
         productDescription: "productDescription",
       ),
     );
-    sc.set_months();
+    sc.set_months(1);
     second = Customer(
       sel_product: product(
         productName: "nioma",
@@ -42,7 +43,9 @@ class _CustumerListState extends State<CustumerList> {
       numerMonth: 4,
       monthlyPayment: 500,
     );
-    second.set_months();
+    second.set_months(3);
+
+    debugPrint("opening the datbase ");
     super.initState();
   }
 
@@ -99,13 +102,15 @@ class _CustumerListState extends State<CustumerList> {
                   onTap: () => showDialog(
                     context: context,
                     builder: (context) {
-                      return  AlertDialog(
+                      return AlertDialog(
                         content: Container(
                           width: double.maxFinite,
                           child: ListView.builder(
                             itemCount: second.months_array.length,
                             itemBuilder: (context, index) {
-                              return Text(second.months_array[index].toString());
+                              return Text(
+                                second.months_array[index].toString(),
+                              );
                             },
                           ),
                         ),
