@@ -217,14 +217,12 @@ class AddCustumer extends StatelessWidget {
                       builder: (_, value, __) => MainButton(
                         txt: 'إضافة',
                         size: MediaQuery.of(context).size,
-                        onPressed: () async {
+                        onPressed: ()  {
                           if (formKey.currentState!.validate()) {
                             customerCont.onPressed(context);
                             value.add_customer(customerCont.cureentCustomer!);
-                            List<Customer> list = await value.get_customer_list();
-                            debugPrint(
-                              "the name of customer ${list.last.name} and product name ${list.last.sel_product.productName}",
-                            );
+                           
+                           
                           }
                         },
                       ),
