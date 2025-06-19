@@ -9,7 +9,7 @@
             "name": "taksit_walid",
             "request": "launch",
             "type": "dart",
-             "deviceId": "emulator-5554"
+             "deviceId": "XGQG6LHAHIWKPR9H"
         },
         {
             "name": "taksit_walid (profile mode)",

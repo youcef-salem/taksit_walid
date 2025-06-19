@@ -38,7 +38,7 @@ class AddCustumer extends StatelessWidget {
                     const SizedBox(height: 30),
                     Consumer<ProductList>(
                       builder: (context, productList, _) {
-                        return Row(
+                        return Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             MainButton(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:taksit_walid/model/customer.dart';
+import 'package:taksit_walid/utilities/luncher.dart';
 import 'package:taksit_walid/widgets/dilago_customer.dart';
 
 class Custumer extends StatelessWidget {
@@ -55,12 +56,15 @@ class Custumer extends StatelessWidget {
                   ),
                 ),
 
-                Text(
-                  custumer.phone_number,
-
-                  style: Theme.of(
-                    context,
-                  ).textTheme.headlineSmall!.copyWith(color: Colors.grey),
+                TextButton(
+                  onPressed:()=> Luncher.luncher(custumer.phone_number.toString(),Luncher.extension) ,
+                  child: Text(
+                    custumer.phone_number,
+                  
+                    style: Theme.of(
+                      context,
+                    ).textTheme.headlineSmall!.copyWith(color: Colors.grey),
+                  ),
                 ),
                 SizedBox(height: 5),
               ],

@@ -5,7 +5,7 @@ import 'package:taksit_walid/widgets/price_dilog_card.dart';
 class ProductWithMonthsDialog extends StatelessWidget {
   final Customer sc;
   final Size size;
-  
+
   const ProductWithMonthsDialog({
     super.key,
     required this.sc,
@@ -15,28 +15,21 @@ class ProductWithMonthsDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    
+
     return Directionality(
       textDirection: TextDirection.rtl,
       child: Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(24),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         elevation: 8,
         child: Container(
           width: size.width * 0.9,
-          constraints: BoxConstraints(
-            maxHeight: size.height * 0.8,
-          ),
+          constraints: BoxConstraints(maxHeight: size.height * 0.8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24),
             gradient: LinearGradient(
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
-              colors: [
-                Colors.white,
-                Colors.grey.shade50,
-              ],
+              colors: [Colors.white, Colors.grey.shade50],
             ),
           ),
           child: SingleChildScrollView(
@@ -48,10 +41,7 @@ class ProductWithMonthsDialog extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
-                      colors: [
-                        Colors.blue.shade600,
-                        Colors.blue.shade400,
-                      ],
+                      colors: [Colors.blue.shade600, Colors.blue.shade400],
                     ),
                     borderRadius: const BorderRadius.only(
                       topRight: Radius.circular(24),
@@ -81,7 +71,7 @@ class ProductWithMonthsDialog extends StatelessWidget {
                     ],
                   ),
                 ),
-                
+
                 // Content
                 Flexible(
                   child: SingleChildScrollView(
@@ -125,66 +115,66 @@ class ProductWithMonthsDialog extends StatelessWidget {
                                   Expanded(
                                     child: Text(
                                       sc.sel_product.productName,
-                                      style: theme.textTheme.titleLarge?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey.shade800,
-                                        fontSize: 18,
-                                      ),
+                                      style: theme.textTheme.titleLarge
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey.shade800,
+                                            fontSize: 18,
+                                          ),
                                     ),
                                   ),
                                 ],
                               ),
-                              
+
                               const SizedBox(height: 16),
-                              
+
                               // Product Description
-                              
-                              
-                              
-                              
+
                               // Price Cards
                               Row(
                                 children: [
                                   Expanded(
                                     child: buildPriceCard(
-                                    title:   'سعر الشراء',
-                                     value:  '${sc.sel_product.buy_Price}',
-                                    color:   Colors.green,
-                                    icon:   Icons.trending_down_rounded,
+                                      title: 'سعر الشراء',
+                                      value: '${sc.sel_product.buy_Price}',
+                                      color: Colors.green,
+                                      icon: Icons.trending_down_rounded,
                                     ),
                                   ),
                                   const SizedBox(width: 12),
                                   Expanded(
                                     child: buildPriceCard(
-                                   title:   'سعر البيع',
-                                  value:     '${sc.sel_product.productPrice}',
-                                    color:   Colors.orange,
-                                    icon:   Icons.trending_up_rounded,
+                                      title: 'سعر البيع',
+                                      value: '${sc.sel_product.productPrice}',
+                                      color: Colors.orange,
+                                      icon: Icons.trending_up_rounded,
                                     ),
                                   ),
                                 ],
                               ),
-                              
+
                               const SizedBox(height: 12),
-                              
+
                               // Monthly Payment Card (reduced height)
-                              Container(
-                             padding: const EdgeInsets.all(8),
-                                height: size.height*0.12,
-                                child: buildPriceCard(
-                               title:    'قيمة الدفعة الشهرية',
-                               value:    '${sc.monthlyPayment}',
-                                color:   Colors.blue,
-                                  icon:    Icons.payments_outlined,
-                                  isFullWidth: true,
-                                ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: buildPriceCard(
+                                      title: 'قيمة الدفعة الشهرية',
+                                      value: '${sc.monthlyPayment}',
+                                      color: Colors.blue,
+                                      icon: Icons.payments_outlined,
+                                      isFullWidth: true,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                         ),
-                        
+
                         const SizedBox(height: 20),
-                        
+
                         // Monthly Payments Section
                         Container(
                           decoration: BoxDecoration(
@@ -213,10 +203,11 @@ class ProductWithMonthsDialog extends StatelessWidget {
                                     const SizedBox(width: 8),
                                     Text(
                                       'الأقساط الشهرية',
-                                      style: theme.textTheme.titleMedium?.copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.grey.shade800,
-                                      ),
+                                      style: theme.textTheme.titleMedium
+                                          ?.copyWith(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.grey.shade800,
+                                          ),
                                     ),
                                     const Spacer(),
                                     Container(
@@ -240,13 +231,15 @@ class ProductWithMonthsDialog extends StatelessWidget {
                                   ],
                                 ),
                               ),
-                              
+
                               Container(
-                                height: 300, // Increased height to show all items
+                                height:
+                                    300, // Increased height to show all items
                                 child: sc.months_array.isEmpty
                                     ? Center(
                                         child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
                                           children: [
                                             Icon(
                                               Icons.receipt_long_outlined,
@@ -256,10 +249,11 @@ class ProductWithMonthsDialog extends StatelessWidget {
                                             const SizedBox(height: 16),
                                             Text(
                                               'لا توجد دفعات شهرية',
-                                              style: theme.textTheme.bodyLarge?.copyWith(
-                                                color: Colors.grey.shade600,
-                                                fontWeight: FontWeight.w500,
-                                              ),
+                                              style: theme.textTheme.bodyLarge
+                                                  ?.copyWith(
+                                                    color: Colors.grey.shade600,
+                                                    fontWeight: FontWeight.w500,
+                                                  ),
                                             ),
                                           ],
                                         ),
@@ -270,20 +264,29 @@ class ProductWithMonthsDialog extends StatelessWidget {
                                           vertical: 10,
                                         ),
                                         itemCount: sc.months_array.length,
-                                        separatorBuilder: (_, __) => const SizedBox(height: 8),
+                                        separatorBuilder: (_, __) =>
+                                            const SizedBox(height: 8),
                                         itemBuilder: (context, index) {
                                           final m = sc.months_array[index];
-                                          final isPaid = m.time_payment != null && 
-                                                         m.time_payment!.isNotEmpty;
-                                          
+                                          final isPaid =
+                                              m.time_payment != null &&
+                                              m.time_payment!.isNotEmpty;
+
                                           return Container(
                                             decoration: BoxDecoration(
                                               gradient: LinearGradient(
                                                 colors: isPaid
-                                                    ? [Colors.green.shade50, Colors.green.shade100]
-                                                    : [Colors.orange.shade50, Colors.orange.shade100],
+                                                    ? [
+                                                        Colors.green.shade50,
+                                                        Colors.green.shade100,
+                                                      ]
+                                                    : [
+                                                        Colors.orange.shade50,
+                                                        Colors.orange.shade100,
+                                                      ],
                                               ),
-                                              borderRadius: BorderRadius.circular(16),
+                                              borderRadius:
+                                                  BorderRadius.circular(16),
                                               border: Border.all(
                                                 color: isPaid
                                                     ? Colors.green.shade200
@@ -292,78 +295,76 @@ class ProductWithMonthsDialog extends StatelessWidget {
                                               ),
                                             ),
                                             padding: const EdgeInsets.all(12),
-                                            child: Row(
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
+                                              // First row: Icon and installment number
+                                              Row(
+                                                children: [
                                                 Container(
                                                   padding: const EdgeInsets.all(6),
                                                   decoration: BoxDecoration(
-                                                    color: isPaid
-                                                        ? Colors.green.shade200
-                                                        : Colors.orange.shade200,
-                                                    borderRadius: BorderRadius.circular(12),
+                                                  color: isPaid
+                                                    ? Colors.green.shade200
+                                                    : Colors.orange.shade200,
+                                                  borderRadius: BorderRadius.circular(12),
                                                   ),
                                                   child: Icon(
-                                                    isPaid
-                                                        ? Icons.check_circle_outline
-                                                        : Icons.schedule_outlined,
-                                                    color: isPaid
-                                                        ? Colors.green.shade800
-                                                        : Colors.orange.shade800,
-                                                    size: 18,
+                                                  isPaid
+                                                    ? Icons.check_circle_outline
+                                                    : Icons.schedule_outlined,
+                                                  color: isPaid
+                                                    ? Colors.green.shade800
+                                                    : Colors.orange.shade800,
+                                                  size: 18,
                                                   ),
                                                 ),
                                                 const SizedBox(width: 10),
                                                 Expanded(
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                      Text(
-                                                        'القسط رقم ${m.numner_of_pay}',
-                                                        style: theme.textTheme.bodyLarge?.copyWith(
-                                                          fontWeight: FontWeight.bold,
-                                                          color: Colors.grey.shade800,
-                                                        ),
-                                                      ),
-                                                      const SizedBox(height: 4),
-                                                      Row(
-                                                        children: [
-                                                          Icon(
-                                                            Icons.event_outlined,
-                                                            size: 16,
-                                                            color: Colors.grey.shade600,
-                                                          ),
-                                                          const SizedBox(width: 4),
-                                                          Text(
-                                                            'تاريخ الاستحقاق: ${m.deadligne}',
-                                                            style: theme.textTheme.bodySmall?.copyWith(
-                                                              color: Colors.grey.shade600,
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                      if (isPaid) ...[
-                                                        const SizedBox(height: 4),
-                                                        Row(
-                                                          children: [
-                                                            Icon(
-                                                              Icons.check_circle,
-                                                              size: 16,
-                                                              color: Colors.green.shade700,
-                                                            ),
-                                                            const SizedBox(width: 4),
-                                                            Text(
-                                                              'تم الدفع: ${m.time_payment}',
-                                                              style: theme.textTheme.bodySmall?.copyWith(
-                                                                color: Colors.green.shade700,
-                                                                fontWeight: FontWeight.w600,
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ],
-                                                    ],
+                                                  child: Text(
+                                                  'القسط رقم ${m.numner_of_pay}',
+                                                  style: theme.textTheme.bodyLarge?.copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.grey.shade800,
+                                                  ),
                                                   ),
                                                 ),
+                                                ],
+                                              ),
+                                              const SizedBox(height: 13),
+                                              // Second row: Due date and payment info
+                                              Row(
+                                                children: [
+                                                Icon(
+                                                  Icons.event_outlined,
+                                                  size: 16,
+                                                  color: Colors.grey.shade600,
+                                                ),
+                                                const SizedBox(width: 4),
+                                                Text(
+                                                  'تاريخ الاستحقاق: ${m.deadligne}',
+                                                  style: theme.textTheme.bodySmall?.copyWith(
+                                                  color: Colors.grey.shade600,
+                                                  ),
+                                                ),
+                                                if (isPaid) ...[
+                                                  const SizedBox(width: 16),
+                                                  Icon(
+                                                  Icons.check_circle,
+                                                  size: 16,
+                                                  color: Colors.green.shade700,
+                                                  ),
+                                                  const SizedBox(width: 4),
+                                                  Text(
+                                                  'تم الدفع: ${m.time_payment}',
+                                                  style: theme.textTheme.bodySmall?.copyWith(
+                                                    color: Colors.green.shade700,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                  ),
+                                                ],
+                                                ],
+                                              ),
                                               ],
                                             ),
                                           );
@@ -373,9 +374,9 @@ class ProductWithMonthsDialog extends StatelessWidget {
                             ],
                           ),
                         ),
-                        
+
                         const SizedBox(height: 20),
-                        
+
                         // Close Button
                         Container(
                           width: double.infinity,
@@ -429,5 +430,4 @@ class ProductWithMonthsDialog extends StatelessWidget {
       ),
     );
   }
-
 }
