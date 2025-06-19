@@ -41,6 +41,7 @@ class CustumerList extends StatelessWidget {
                     itemCount: val.lista.length,
                     itemBuilder: (context, index) {
                       return Custumer(
+                       onPay: val.paying,
                         custumer: val.lista[index],
                         size: MediaQuery.of(context).size,
                       );

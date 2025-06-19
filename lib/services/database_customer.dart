@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
+import 'package:taksit_walid/model/customer.dart';
 
 class CustomerDB {
   /// Opens (or creates) the database and the needed tables.
@@ -55,9 +56,15 @@ class CustomerDB {
     return id;
   }
 
-  Future<int> insertMonthlyPayment(Database db, int customerId, Map<String, dynamic> payment) async {
+  Future<int> insertMonthlyPayment(
+    Database db,
+    int customerId,
+    Map<String, dynamic> payment,
+  ) async {
     payment['customer_id'] = customerId;
-    debugPrint('Inserting monthly payment for customer id $customerId: $payment');
+    debugPrint(
+      'Inserting monthly payment for customer id $customerId: $payment',
+    );
     int id = await db.insert('monthly_payments', payment);
     debugPrint('Inserted monthly payment with id: $id');
     return id;
@@ -70,11 +77,34 @@ class CustomerDB {
     return customers;
   }
 
-  Future<List<Map<String, dynamic>>> getMonthlyPayments(Database db, int customerId) async {
+  Future<List<Map<String, dynamic>>> getMonthlyPayments(
+    Database db,
+    int customerId,
+  ) async {
     debugPrint('Fetching monthly payments for customer id: $customerId');
-    List<Map<String, dynamic>> payments = await db.query('monthly_payments', where: 'customer_id = ?', whereArgs: [customerId]);
-    debugPrint('Fetched ${payments.length} monthly payments for customer id: $customerId');
+    List<Map<String, dynamic>> payments = await db.query(
+      'monthly_payments',
+      where: 'customer_id = ?',
+      whereArgs: [customerId],
+    );
+    debugPrint(
+      'Fetched ${payments.length} monthly payments for customer id: $customerId',
+    );
     return payments;
+  }
+
+  Future<void> pay_month(Database db, Customer customer) async {
+    await db.delete(
+      'monthly_payments',
+      where: 'customer_id = ? AND numner_of_pay=? ',
+      whereArgs: [customer.id, customer.numerMonth],
+    );
+    await db.update('customers',
+     {'numerMonth': customer.numerMonth - 1}  ,
+     where: 'id=?',
+     whereArgs: [customer.id]
+     
+      );
   }
 
   Future<void> closeDB(Database db) async {

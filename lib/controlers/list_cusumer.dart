@@ -13,7 +13,7 @@ class ListCusumer with ChangeNotifier {
     _initilisation();
   }
   Future<void> _initilisation() async {
-   await _initDB();
+    await _initDB();
     await setlist();
   }
 
@@ -26,6 +26,11 @@ class ListCusumer with ChangeNotifier {
     db = await clas_db.openDB();
     log('Database opened successfully.');
     notifyListeners();
+  }
+
+  Future<void> paying(Customer customer) async {
+    await clas_db.pay_month(db, customer);
+    await setlist();
   }
 
   void add_customer(Customer sc) {

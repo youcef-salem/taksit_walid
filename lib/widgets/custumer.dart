@@ -5,8 +5,10 @@ import 'package:taksit_walid/widgets/dilago_customer.dart';
 class Custumer extends StatelessWidget {
   final Customer custumer;
   final Size size;
-
-  const Custumer({super.key, required this.custumer, required this.size});
+  final void Function(Customer) onPay;
+  const Custumer({super.key,
+ required this.onPay,
+   required this.custumer, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -64,24 +66,27 @@ class Custumer extends StatelessWidget {
               ],
             ),
           ),
-          DecoratedBox(
-            decoration: BoxDecoration(
-              color: Color(0xFFF2F2F5),
-
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Padding(
-              padding: const EdgeInsets.only(
-                top: 16,
-                bottom: 16,
-                right: 29,
-                left: 29,
+          GestureDetector(
+            onTap: () => onPay(custumer),
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                color: Color(0xFFF2F2F5),
+            
+                borderRadius: BorderRadius.circular(20),
               ),
-              child: Text(
-                'الدفع',
-                style: Theme.of(context).textTheme.headlineMedium!.copyWith(
-                  color: Color(0xFF121417),
-                  fontWeight: FontWeight.bold,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                  top: 16,
+                  bottom: 16,
+                  right: 29,
+                  left: 29,
+                ),
+                child: Text(
+                  'الدفع',
+                  style: Theme.of(context).textTheme.headlineMedium!.copyWith(
+                    color: Color(0xFF121417),
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),

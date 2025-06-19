@@ -30,14 +30,13 @@ class Customer {
     return 'Customer(id: $id, name: $name, description: $description, numerMonth: $numerMonth, phone_number: $phone_number, monthlyPayment: $monthlyPayment  ';
   }
 
-  Map<String, dynamic> toMap() {
-    final customer_map = <String, dynamic>{
+  Map<String, dynamic> toMap() {    final customer_map = <String, dynamic>{
       'id': id,
       'name': name,
       'description': description,
       'numerMonth': numerMonth,
       'phone_number': phone_number,
-     
+      'monthlyPayment' :monthlyPayment,
     };
     customer_map.addAll(sel_product.toMap());
     return customer_map;
@@ -51,7 +50,7 @@ class Customer {
       description: map['description']?.toString() ?? '',
       numerMonth: map['numerMonth'] is int ? map['numerMonth'] : int.parse(map['numerMonth'].toString()),
       phone_number: map['phone_number']?.toString() ?? '',
-      monthlyPayment: map['monthlyPayment'] == null ? 0.0 : (map['monthlyPayment'] is double ? map['monthlyPayment'] : double.parse(map['monthlyPayment'].toString())),
+       monthlyPayment: map['monthlyPayment'] == null ? 0.0 : (map['monthlyPayment'] is double ? map['monthlyPayment'] : double.parse(map['monthlyPayment'].toString())),
       sel_product: product.fromMap(map), // product fields come from the same map
      
     );
