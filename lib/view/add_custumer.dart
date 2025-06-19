@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:taksit_walid/controlers/add_costumer.dart';
 import 'package:taksit_walid/controlers/list_cusumer.dart';
 import 'package:taksit_walid/controlers/product_list.dart';
-import 'package:taksit_walid/model/customer.dart';
+
 import 'package:taksit_walid/model/txt_addproduct.dart';
 import 'package:taksit_walid/widgets/main_button.dart';
 import 'package:taksit_walid/widgets/txt_filed.dart';

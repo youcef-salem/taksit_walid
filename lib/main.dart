@@ -5,7 +5,7 @@ import 'package:taksit_walid/controlers/product_list.dart';
 import 'package:taksit_walid/controlers/txt_filed_addproduct.dart';
 import 'package:taksit_walid/utilities/router.dart';
 import 'package:taksit_walid/utilities/routes.dart';
-import 'package:taksit_walid/view/addproduct_page.dart';
+
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
