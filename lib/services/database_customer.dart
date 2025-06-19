@@ -100,7 +100,7 @@ class CustomerDB {
       whereArgs: [customer.id, customer.numerMonth],
     );
     await db.update('customers',
-     {'numerMonth': customer.numerMonth - 1}  ,
+     {'numerMonth': customer.numerMonth==0 ? 0 : customer.numerMonth - 1}  ,
      where: 'id=?',
      whereArgs: [customer.id]
      

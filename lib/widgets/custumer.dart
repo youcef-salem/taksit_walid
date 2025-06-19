@@ -48,7 +48,7 @@ class Custumer extends StatelessWidget {
                 ),
                 SizedBox(height: 5),
                 Text(
-                  "(${custumer.months_array.first.deadligne})",
+                  "(${custumer.months_array.isEmpty?"لا يوجد اشهر ":(custumer.months_array.first.deadligne)})",
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                     color: Color.fromARGB(255, 218, 13, 44),
                     fontWeight: FontWeight.w500,
