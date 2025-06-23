@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:taksit_walid/utilities/routes.dart';
-import 'package:taksit_walid/view/add_custumer.dart';
 import 'package:taksit_walid/view/addproduct_page.dart';
 import 'package:taksit_walid/view/custumer_list.dart';
 import 'package:taksit_walid/view/product_page.dart';
@@ -26,6 +25,6 @@ Route<dynamic> generateRoute(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => CustumerList());
 
     default:
-      return MaterialPageRoute(builder: (_) => AddproductPage());
+      return MaterialPageRoute(builder: (_) => CustumerList());
   }
 }

@@ -15,6 +15,7 @@ class ListCusumer with ChangeNotifier {
   Future<void> _initilisation() async {
     await _initDB();
     await setlist();
+    outdated();
   }
 
   Future<void> setlist() async {
@@ -61,5 +62,28 @@ class ListCusumer with ChangeNotifier {
       list_cutomer.add(curent);
     }
     return list_cutomer;
+  }
+
+  void outdated() {
+    final currentDate = DateTime.now();
+    for (var customer in lista) {
+      if (customer.months_array.isNotEmpty) {
+        // Parse the 'deadligne' string to DateTime for comparison
+        final deadlineStr = customer.months_array.first.deadligne;
+        try {
+          final deadline = DateTime.parse(
+            deadlineStr.split('-').reversed.join('-'),
+          );
+          if (deadline.isBefore(currentDate)) {
+            customer.months_array.first.is_payed = true;
+            notifyListeners();
+          }
+        } catch (e) {
+          print(
+            'Invalid date format for customer ${customer.id}: $deadlineStr',
+          );
+        }
+      }
+    }
   }
 }

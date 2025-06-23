@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MainButton extends StatelessWidget {
+  
   void Function()? onPressed;
   String txt;
   final Size size;

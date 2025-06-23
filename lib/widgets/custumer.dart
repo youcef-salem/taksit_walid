@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
+
 import 'package:taksit_walid/model/customer.dart';
 import 'package:taksit_walid/utilities/luncher.dart';
 import 'package:taksit_walid/widgets/dilago_customer.dart';
@@ -36,7 +36,7 @@ class Custumer extends StatelessWidget {
                 Text(
                   custumer.name,
                   style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                    color: Color(0xFF121417),
+                    color:  !custumer.months_array.isEmpty ?   (custumer.months_array.first.is_payed? Colors.red: Color(0xFF121417)) : Colors.black ,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -163,7 +163,8 @@ class Custumer extends StatelessWidget {
           ,
             child: DecoratedBox(
               decoration: BoxDecoration(
-                color: Color(0xFFF2F2F5),
+               color:  !custumer.months_array.isEmpty ?   (custumer.months_array.first.is_payed? Colors.red: Color(0xFF121417)) :  Color(0xFFF2F2F5),
+              
             
                 borderRadius: BorderRadius.circular(20),
               ),
