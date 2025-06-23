@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:taksit_walid/model/customer.dart';
 import 'package:taksit_walid/utilities/luncher.dart';
 import 'package:taksit_walid/widgets/dilago_customer.dart';
@@ -70,8 +71,96 @@ class Custumer extends StatelessWidget {
               ],
             ),
           ),
-          GestureDetector(
-            onTap: () => onPay(custumer),
+          InkWell(
+            onTap: () => 
+            showDialog(context: context, builder: (context){
+                return Dialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24),
+                ),
+                backgroundColor: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
+                  child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(
+                    Icons.payment_rounded,
+                    color: Colors.blueAccent,
+                    size: 48,
+                    ),
+                    const SizedBox(height: 16),
+                    Text(
+                    "تأكيد الدفع",
+                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                        color: Colors.black87,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 12),
+                    Text(
+                    "هل أنت متأكد أنك تريد تأكيد عملية الدفع لهذا العميل؟",
+                    style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: Colors.grey[700],
+                      ),
+                    textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 28),
+                    Row(
+                    children: [
+                      Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () => Navigator.pop(context),
+                        icon: const Icon(Icons.close_rounded, color: Colors.white),
+                        label: Text(
+                        'إغلاق',
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.grey[500],
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        ),
+                      ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                      child: ElevatedButton.icon(
+                        onPressed: () =>{
+                          onPay(custumer),
+                          Navigator.pop(context)
+                          },
+                        icon: const Icon(Icons.check_circle, color: Colors.white),
+                        label: Text(
+                        "تأكيد الدفع",
+                        style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blueAccent,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        padding: const EdgeInsets.symmetric(vertical: 14),
+                        ),
+                      ),
+                      ),
+                    ],
+                    ),
+                  ],
+                  ),
+                ),
+                );
+            } )
+          ,
             child: DecoratedBox(
               decoration: BoxDecoration(
                 color: Color(0xFFF2F2F5),
