@@ -19,41 +19,40 @@ A Flutter application for managing customer payments, products, and installments
   - Set up installment plans
   - Track payment schedules
   - Monthly payment monitoring
-  
 
-## 📱 Screenshots
+  ## 📱 Screenshots
 
-## Add Product
-<p float="left">
-  <img src="5969595214333069450_121.jpg" width="200" height="400" title="Add Product Page" />
-  <img src="5969595214333069451_121.jpg" width="200" height="400" title="Integrity Constraint and Auto Generate Buy Price from Purchase Price" />
-  <img src="5969595214333069448_121.jpg" width="200" height="400" title="Success" />
-</p>
+  ## Add Product
+  <p float="left">
+    <img src="assets/screenshots/5969595214333069450_121.jpg" width="200" height="400" title="Add Product Page" />
+    <img src="assets/screenshots/5969595214333069451_121.jpg" width="200" height="400" title="Integrity Constraint and Auto Generate Buy Price from Purchase Price" />
+    <img src="assets/screenshots/5969595214333069448_121.jpg" width="200" height="400" title="Success" />
+  </p>
 
-## Product List
-<p float="left">
-  <img src="5969595214333069449_121.jpg" width="200" height="400" title="Product List" />
-</p>
+  ## Product List
+  <p float="left">
+    <img src="assets/screenshots/5969595214333069449_121.jpg" width="200" height="400" title="Product List" />
+  </p>
 
-## Add Customer
-<p float="left">
-  <img src="5969595214333069443_121.jpg" width="200" height="400" title="Success" />
-  <img src="5969595214333069444_121.jpg" width="200" height="400" title="Add Customer" />
-  <img src="5969595214333069445_121.jpg" width="200" height="400" title="Add Customer" />
-  <img src="5969595214333069446_121.jpg" width="200" height="400" title="Choose Product" />
-</p>
+  ## Add Customer
+  <p float="left">
+    <img src="assets/screenshots/5969595214333069443_121.jpg" width="200" height="400" title="Success" />
+    <img src="assets/screenshots/5969595214333069444_121.jpg" width="200" height="400" title="Add Customer" />
+    <img src="assets/screenshots/5969595214333069445_121.jpg" width="200" height="400" title="Add Customer" />
+    <img src="assets/screenshots/5969595214333069446_121.jpg" width="200" height="400" title="Choose Product" />
+  </p>
 
-## Customer List
-<p>
-  <img src="5969595214333069434_121.jpg" width="200" height="400" title="Integrity Constraint" />
-  <img src="5969595214333069435_121.jpg" width="200" height="400" title="Direct Navigation to Phone Call" />
-  <img src="5969595214333069437_121.jpg" width="200" height="400" title="Navigation" />
-  <img src="5969595214333069440_121.jpg" width="200" height="400" title="Payment and Product Information" />
-  <img src="5969595214333069441_121.jpg" width="200" height="400" title="Information" />
-  <img src="5969595214333069442_121.jpg" width="200" height="400" title="Normal Case with Important Info" />
-  <img src="Screenshot_1750759345.png" width="200" height="400" title="Confirm Payment" />
-  <img src="Screenshot_1750759352.png" width="200" height="400" title="Outdated Person - Late to Pay Monthly Payment" />
-</p>
+  ## Customer List
+  <p>
+    <img src="assets/screenshots/5969595214333069434_121.jpg" width="200" height="400" title="Integrity Constraint" />
+    <img src="assets/screenshots/5969595214333069435_121.jpg" width="200" height="400" title="Direct Navigation to Phone Call" />
+    <img src="assets/screenshots/5969595214333069437_121.jpg" width="200" height="400" title="Navigation" />
+    <img src="assets/screenshots/5969595214333069440_121.jpg" width="200" height="400" title="Payment and Product Information" />
+    <img src="assets/screenshots/5969595214333069441_121.jpg" width="200" height="400" title="Information" />
+    <img src="assets/screenshots/5969595214333069442_121.jpg" width="200" height="400" title="Normal Case with Important Info" />
+    <img src="assets/screenshots/Screenshot_1750759345.png" width="200" height="400" title="Confirm Payment" />
+    <img src="assets/screenshots/Screenshot_1750759352.png" width="200" height="400" title="Outdated Person - Late to Pay Monthly Payment" />
+  </p>
 
 ## 🚀 Getting Started
 
