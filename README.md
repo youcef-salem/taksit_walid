@@ -23,16 +23,37 @@ A Flutter application for managing customer payments, products, and installments
 
 ## 📱 Screenshots
 
-[add product ]
-![add_paage](5969595214333069450_121.jpg) ![itegrity_constrint and auto genrate buy_price from purshase price](5969595214333069451_121.jpg)
-![sucess](5969595214333069448_121.jpg)
-[product List]
-![list](5969595214333069449_121.jpg)
-[Add Custumer]
-![sucess](5969595214333069443_121.jpg) ![add_cutumer](5969595214333069444_121.jpg) ![add_cutumer](5969595214333069445_121.jpg) ![choose product](5969595214333069446_121.jpg)
-[custumer list]
-![integrity constrint](5969595214333069434_121.jpg) ![direct navigaation to phone call](5969595214333069435_121.jpg) ![navigaation](5969595214333069437_121.jpg) ![paayement and product information](5969595214333069440_121.jpg) ![information](5969595214333069441_121.jpg) ![normal case with important info](5969595214333069442_121.jpg) ![ confirm payment ](Screenshot_1750759345.png) ![outdated persone .they are late to pay in time of monthly payement ](Screenshot_1750759352.png)
+## Add Product
+<p float="left">
+  <img src="5969595214333069450_121.jpg" width="200" height="400" title="Add Product Page" />
+  <img src="5969595214333069451_121.jpg" width="200" height="400" title="Integrity Constraint and Auto Generate Buy Price from Purchase Price" />
+  <img src="5969595214333069448_121.jpg" width="200" height="400" title="Success" />
+</p>
 
+## Product List
+<p float="left">
+  <img src="5969595214333069449_121.jpg" width="200" height="400" title="Product List" />
+</p>
+
+## Add Customer
+<p float="left">
+  <img src="5969595214333069443_121.jpg" width="200" height="400" title="Success" />
+  <img src="5969595214333069444_121.jpg" width="200" height="400" title="Add Customer" />
+  <img src="5969595214333069445_121.jpg" width="200" height="400" title="Add Customer" />
+  <img src="5969595214333069446_121.jpg" width="200" height="400" title="Choose Product" />
+</p>
+
+## Customer List
+<p>
+  <img src="5969595214333069434_121.jpg" width="200" height="400" title="Integrity Constraint" />
+  <img src="5969595214333069435_121.jpg" width="200" height="400" title="Direct Navigation to Phone Call" />
+  <img src="5969595214333069437_121.jpg" width="200" height="400" title="Navigation" />
+  <img src="5969595214333069440_121.jpg" width="200" height="400" title="Payment and Product Information" />
+  <img src="5969595214333069441_121.jpg" width="200" height="400" title="Information" />
+  <img src="5969595214333069442_121.jpg" width="200" height="400" title="Normal Case with Important Info" />
+  <img src="Screenshot_1750759345.png" width="200" height="400" title="Confirm Payment" />
+  <img src="Screenshot_1750759352.png" width="200" height="400" title="Outdated Person - Late to Pay Monthly Payment" />
+</p>
 
 ## 🚀 Getting Started
 
