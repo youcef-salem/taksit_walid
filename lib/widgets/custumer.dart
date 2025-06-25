@@ -163,7 +163,7 @@ class Custumer extends StatelessWidget {
           ,
             child: DecoratedBox(
               decoration: BoxDecoration(
-               color:  !custumer.months_array.isEmpty ?   (custumer.months_array.first.is_payed? Colors.red: Color(0xFF121417)) :  Color(0xFFF2F2F5),
+               color:  !custumer.months_array.isEmpty ?   (custumer.months_array.first.is_payed? Colors.red:  Color.fromARGB(255, 186, 210, 105)) :  Color(0xFFF2F2F5),
               
             
                 borderRadius: BorderRadius.circular(20),

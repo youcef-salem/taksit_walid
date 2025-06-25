@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:taksit_walid/controlers/product_list.dart';
-import 'package:taksit_walid/controlers/txt_filed_addproduct.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:taksit_walid/controlers/providers.dart';
 import 'package:taksit_walid/model/txt_addproduct.dart';
 import 'package:taksit_walid/widgets/main_button.dart';
 import 'package:taksit_walid/widgets/txt_filed.dart';
 
-class AddproductPage extends StatelessWidget {
+class AddproductPage extends ConsumerWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   AddproductPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Consumer<TxtFiledAddproduct>(
-      builder: (context, prControler, _) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    return Consumer(
+      builder: (context, prCon, _) {
+        final prControler = prCon.watch(AddproductProvider);
         return Scaffold(
           body: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -66,8 +66,9 @@ class AddproductPage extends StatelessWidget {
                       maxligne: 2,
                     ),
                     const SizedBox(height: 20),
-                    Consumer<ProductList>(
-                      builder: (context, productList, _) {
+                    Consumer(
+                      builder: (context, prList, _) {
+                        final productList = prList.watch(productListProvider);
                         return MainButton(
                           txt: 'إضافة',
                           size: MediaQuery.of(context).size,
@@ -75,13 +76,14 @@ class AddproductPage extends StatelessWidget {
                             if (formKey.currentState!.validate()) {
                               prControler.onpressed(context);
                               productList.addProduct(
-                                product(productName: prControler.pr.productName,
-                                 buy_Price:prControler.pr.buy_Price ,
+                                product(
+                                  productName: prControler.pr.productName,
+                                  buy_Price: prControler.pr.buy_Price,
                                   productPrice: prControler.pr.productPrice,
-                                 
-                                  productDescription: prControler.pr.productDescription,
-                                  
-                                  )
+
+                                  productDescription:
+                                      prControler.pr.productDescription,
+                                ),
                               );
                               prControler.clearFields();
                             }

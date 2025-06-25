@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:taksit_walid/controlers/add_costumer.dart';
-import 'package:taksit_walid/controlers/list_cusumer.dart';
-import 'package:taksit_walid/controlers/product_list.dart';
-import 'package:taksit_walid/controlers/txt_filed_addproduct.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:taksit_walid/utilities/router.dart';
 import 'package:taksit_walid/utilities/routes.dart';
 
-import 'package:provider/provider.dart';
+
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (_) => TxtFiledAddproduct()),
-        ChangeNotifierProvider(create: (_) => ProductList()),
-        ChangeNotifierProvider(create: (_) => AddCustomer()) ,
-        ChangeNotifierProvider(create: (_)=>ListCusumer()),
-       
-      ],
-      child: const MyApp(),
-    ),
+    
+      ProviderScope(child: const MyApp()),
+  
   );
 }
 
