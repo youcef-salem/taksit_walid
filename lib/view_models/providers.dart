@@ -1,8 +1,8 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:taksit_walid/controlers/add_costumer.dart';
-import 'package:taksit_walid/controlers/list_cusumer.dart';
-import 'package:taksit_walid/controlers/product_list.dart';
-import 'package:taksit_walid/controlers/txt_filed_addproduct.dart';
+import 'package:taksit_walid/view_models/add_costumer.dart';
+import 'package:taksit_walid/view_models/list_cusumer.dart';
+import 'package:taksit_walid/view_models/product_list.dart';
+import 'package:taksit_walid/view_models/txt_filed_addproduct.dart';
 
 
 final AddproductProvider = ChangeNotifierProvider((ref) => TxtFiledAddproduct());

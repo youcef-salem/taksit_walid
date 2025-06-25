@@ -87,7 +87,7 @@ flutter run
 
 ## 📦 Dependencies
 
-- **provider**: ^6.1.5 - For state management
+- **flutter_riverpod**: ^2.6.1 - For state management
 - **sqflite**: ^2.4.2 - Local database management
 - **persistent_bottom_nav_bar_v2**: ^6.0.1 - Navigation bar
 - **intl**: ^0.20.2 - Internationalization and formatting

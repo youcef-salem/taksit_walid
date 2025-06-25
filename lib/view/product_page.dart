@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import 'package:taksit_walid/controlers/providers.dart';
+import 'package:taksit_walid/view_models/providers.dart';
 import 'package:taksit_walid/model/txt_addproduct.dart' as type;
 import 'package:taksit_walid/widgets/product_card.dart';
 

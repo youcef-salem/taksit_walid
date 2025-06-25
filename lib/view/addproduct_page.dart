@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:taksit_walid/controlers/providers.dart';
+import 'package:taksit_walid/view_models/providers.dart';
 import 'package:taksit_walid/model/txt_addproduct.dart';
 import 'package:taksit_walid/widgets/main_button.dart';
 import 'package:taksit_walid/widgets/txt_filed.dart';
